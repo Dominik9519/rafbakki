@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafbakki</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #333; /* Ciemnoszary tło */
+            color: white;
+            text-align: center;
+        }
+
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 1s ease-out;
+        }
+        .preloader img {
+            max-width: 200px;
+        }
+        .hide-preloader {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .header {
+            background-color: #1a1a1a; /* Lekko jaśniejszy odcień czerni */
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+        .header img {
+            max-width: 220px;
+            position: absolute;
+            left: 10px;
+            top: 0px;
+        }
+        .header-text {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .date-time {
+            color: white;
+            text-align: right;
+            padding-right: 20px;
+        }
+        .date-time #date, .date-time #time {
+            display: block; /* Każdy element w nowej linii */
+            font-size: 25px; /* Zwiększenie wielkości czcionki dla daty i godziny */
+        }
+
+        .main-content {
+            padding-top: 120px; /* Adjust for header height */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .welcome-message {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .services, .contact-form {
+            flex: 1;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            color: white;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            background-color: #4CAF50; /* Green button */
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #45a049; /* Darker shade of green */
+        }
+
+        .footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 20px;
+            position:relative;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .phone-number a {
+            color: #4CAF50; /* Green text color */
+            font-size: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="preloader" id="preloader">
+        <img src="images/logo.png" alt="Rafbakki Logo">
+    </div>
+
+    <div class="header">
+        <a href="/"><img src="images/logo.png" alt="Rafbakki Logo"></a>
+        <div class="header-text"></div>
+        <div class="date-time">
+            <div id="date"></div>
+            <div id="time"></div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="welcome-message">
+            <h2>Velkomin til Rafbakki!</h2>
+            <p>Rafvirkjunarþjónusta á faglegum nótum innan seilingar.</p>
+        </div>
+        <div class="flex-container">
+            <div class="services">
+                <h3>Þjónustur okkar:</h3>
+                <p>🌡️ <strong>Hitadælur:</strong> Njóttu nútíma lausna fyrir upphitun og kælingu sem tryggja þægindi á lægri rekstrarkostnaði.</p>
+                <p>🔧 <strong>Skipti á gömlu Tichino kerfi:</strong> Fagleg skipti á gömlum rafkerfum sem auka öryggi og orkunýtni.</p>
+                <p>🔥 <strong>Gólfhiti:</strong> Settu upp gólfhita til að auka þægindi og jafna hitadreifingu í herbergjum.</p>
+                <p>🏠 <strong>Ytri lýsing:</strong> Hönnun og uppsetning á ytri lýsingu sem undirstrikar fegurð útirýmis.</p>
+                <p>💡 <strong>Innri lýsing:</strong> Hágæða lýsingarlausnir fyrir innrými sem sameina fagmennsku og fegurð.</p>
+                <p>🔔 <strong>Dyra bjöllur:</strong> Uppsetning nútímalegra dyra bjalla með snjallsheimamöguleikum.</p>
+                <p>🔋 <strong>Hleðslustöðvar:</strong> Uppsetning hleðslustöðva fyrir rafbíla sem veita fljótlega og þægilega hleðslu.</p>
+                <p>⚙️ <strong>Uppfærslur á kerfum:</strong> Endurnýjun og modernisering gamalla rafkerfa til að mæta nútíma tæknikröfum.</p>
+                <p>🛠️ <strong>Fleiri þjónustur:</strong> Við bjóðum einnig upp á fjölbreytt úrval annarra rafvirkjunarþjónusta, sem við aðlögum að þínum þörfum.</p>
+            </div>
+
+            <div class="contact-form">
+                <h3>Hafðu samband við okkur ef þú þarft rafvirki!</h3>
+                <p class="phone-number"><a href="tel:8480153">📞 Sími: 848-0153</a></p>
+                <form action="#" method="POST">
+                    <input type="text" name="name" placeholder="Fullt nafn" required>
+                    <input type="email" name="email" placeholder="Netfang" required>
+                    <input type="tel" name="phone" placeholder="Símanúmer" required>
+                    <textarea name="message" rows="4" placeholder="Skilaboð þín" required></textarea>
+                    <button type="submit">Senda</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Rafbakki. Allur réttur áskilinn.</p>
+    </div>
+
+    <script>
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                document.getElementById("preloader").classList.add("hide-preloader");
+            }, 1000);
+        });
+        function updateDateTime() {
+            var dt = new Date();
+            document.getElementById("date").innerHTML = dt.toLocaleDateString('is-IS', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+            });
+            document.getElementById("time").innerHTML = dt.toLocaleTimeString('is-IS', {
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
+            });
+        }
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
