@@ -9,7 +9,7 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #333;
+            background-color: #333; /* Ciemnoszary tło */
             color: white;
             text-align: center;
         }
@@ -32,11 +32,12 @@
         }
         .hide-preloader {
             opacity: 0;
-            pointer-events: none;
+            visibility: hidden;
+            transition: visibility 0s 1s, opacity 1s ease-out;
         }
 
         .header {
-            background-color: #1a1a1a;
+            background-color: #1a1a1a; /* Lekko jaśniejszy odcień czerni */
             padding: 10px 0;
             position: fixed;
             top: 0;
@@ -53,7 +54,19 @@
             position: absolute;
             left: 10px;
             top: 0px;
+            transition: max-width 0.3s ease-in-out; /* Smooth transition for resizing */
         }
+        
+        @media (max-width: 768px) {
+            .header img {
+                max-width: 140px; /* Smaller size for mobile */
+                position: relative; /* Center logo on mobile */
+                left: 0;
+                top: 0;
+                margin: 0 auto;
+            }
+        }
+
         .header-text {
             flex-grow: 1;
             text-align: center;
@@ -62,6 +75,7 @@
             color: white;
             text-align: right;
             padding-right: 20px;
+            display: block;
         }
         .date-time #date, .date-time #time {
             display: block;
@@ -69,7 +83,7 @@
         }
 
         .main-content {
-            padding-top: 120px;
+            padding-top: 120px; /* Adjust for header height */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -95,7 +109,7 @@
             margin: 10px;
             padding: 20px;
             border-radius: 8px;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
             color: white;
         }
 
@@ -107,7 +121,7 @@
             border-radius: 5px;
         }
         .contact-form button {
-            background-color: #4CAF50;
+            background-color: #4CAF50; /* Green button */
             color: white;
             padding: 15px 20px;
             border: none;
@@ -117,20 +131,20 @@
             transition: background 0.3s;
         }
         .contact-form button:hover {
-            background-color: #45a049;
+            background-color: #45a049; /* Darker shade of green */
         }
 
         .footer {
             background-color: #1a1a1a;
             color: white;
             padding: 20px;
-            position:relative;
+            position: relative;
             width: 100%;
             font-size: 16px;
         }
 
         .phone-number a {
-            color: #4CAF50;
+            color: #4CAF50; /* Green text color */
             font-size: 20px;
             text-decoration: none;
             font-weight: bold;
@@ -140,32 +154,6 @@
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
-        }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .header img {
-                margin: 0 auto;
-                position: relative;
-                top: 0;
-            }
-
-            .date-time {
-                display: none;
-            }
-
-            .flex-container {
-                flex-direction: column;
-            }
-
-            .services, .contact-form {
-                width: 100%;
-                margin: 10px 0;
-            }
         }
     </style>
 </head>
