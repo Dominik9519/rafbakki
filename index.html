@@ -13,7 +13,7 @@
             color: white;
             text-align: center;
         }
-    
+
         .preloader {
             position: fixed;
             top: 0;
@@ -32,10 +32,9 @@
         }
         .hide-preloader {
             opacity: 0;
-            visibility: hidden;
-            transition: visibility 0s 1s, opacity 1s ease-out;
+            pointer-events: none;
         }
-    
+
         .header {
             background-color: #1a1a1a; /* Lekko jaśniejszy odcień czerni */
             padding: 10px 0;
@@ -50,36 +49,11 @@
             height: 80px;
         }
         .header img {
-            position: relative;
-            max-width: 220px; /* Default logo size */
-            transition: max-width 0.3s ease-in-out; /* Smooth transition for resizing */
+            max-width: 220px;
+            position: absolute;
+            left: 10px;
+            top: 0px;
         }
-    
-        @media (max-width: 500px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-            }
-    
-            .header img {
-                max-width: 120px; /* Smaller logo size for mobile */
-                margin: 0 auto; /* Center the logo */
-            }
-    
-            .date-time {
-                display: none; /* Hide the date and time on mobile */
-            }
-    
-            .flex-container {
-                flex-direction: column; /* Stack the containers on mobile */
-            }
-    
-            .services, .contact-form {
-                width: 100%; /* Full width for mobile layout */
-                margin: 10px 0; /* Adjust margin for stacked layout */
-            }
-        }
-    
         .header-text {
             flex-grow: 1;
             text-align: center;
@@ -89,21 +63,25 @@
             text-align: right;
             padding-right: 20px;
         }
-    
+        .date-time #date, .date-time #time {
+            display: block; /* Każdy element w nowej linii */
+            font-size: 25px; /* Zwiększenie wielkości czcionki dla daty i godziny */
+        }
+
         .main-content {
-            padding-top: 100px; /* Adjust for header height */
+            padding-top: 120px; /* Adjust for header height */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
         }
-    
+
         .welcome-message {
             margin-top: 20px;
             font-size: 24px;
             font-weight: bold;
         }
-    
+
         .flex-container {
             display: flex;
             flex-direction: row;
@@ -111,7 +89,7 @@
             width: 100%;
             padding: 20px;
         }
-    
+
         .services, .contact-form {
             flex: 1;
             margin: 10px;
@@ -120,7 +98,7 @@
             background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
             color: white;
         }
-    
+
         .contact-form input, .contact-form textarea {
             width: calc(100% - 20px);
             padding: 10px;
@@ -141,16 +119,16 @@
         .contact-form button:hover {
             background-color: #45a049; /* Darker shade of green */
         }
-    
+
         .footer {
             background-color: #1a1a1a;
             color: white;
             padding: 20px;
-            position: relative;
+            position:relative;
             width: 100%;
             font-size: 16px;
         }
-    
+
         .phone-number a {
             color: #4CAF50; /* Green text color */
             font-size: 20px;
@@ -158,13 +136,36 @@
             font-weight: bold;
             animation: pulse 1.5s infinite;
         }
-    
+
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
+
+        /* Stylowanie dla urządzeń mobilnych */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header img {
+                margin: 0 auto; /* Centrowanie logo */
+            }
+
+            .date-time {
+                display: none; /* Ukrywanie zegara i daty */
+            }
+
+            .flex-container {
+                flex-direction: column; /* Kontenery jeden pod drugim */
+            }
+
+            .services, .contact-form {
+                margin-bottom: 20px; /* Dodanie odstępu między kontenerami */
+            }
+        }
     </style>
-    
 </head>
 <body>
     <div class="preloader" id="preloader">
@@ -220,9 +221,19 @@
     <script>
         window.addEventListener("load", function () {
             setTimeout(function () {
-                document.getElementById('preloader').classList.add('hide-preloader');
-            }, 1000); // Hide preloader after 1 second
+                document.getElementById("preloader").classList.add("hide-preloader");
+            }, 1000);
         });
+        function updateDateTime() {
+            var dt = new Date();
+            document.getElementById("date").innerHTML = dt.toLocaleDateString('is-IS', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+            });
+            document.getElementById("time").innerHTML = dt.toLocaleTimeString('is-IS', {
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
+            });
+        }
+        setInterval(updateDateTime, 1000);
     </script>
 </body>
 </html>
