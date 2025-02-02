@@ -141,15 +141,39 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
         }
+
+        /* Stylowanie dla urządzeń mobilnych */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header img {
+                margin: 0 auto; /* Centrowanie logo */
+            }
+
+            .date-time {
+                display: none; /* Ukrywanie zegara i daty */
+            }
+
+            .flex-container {
+                flex-direction: column; /* Kontenery jeden pod drugim */
+            }
+
+            .services, .contact-form {
+                margin-bottom: 20px; /* Dodanie odstępu między kontenerami */
+            }
+        }
     </style>
 </head>
 <body>
     <div class="preloader" id="preloader">
-        <img src="logo.png" alt="Rafbakki Logo">
+        <img src="images/logo.png" alt="Rafbakki Logo">
     </div>
 
     <div class="header">
-        <a href="/"><img src="logo.png" alt="Rafbakki Logo"></a>
+        <a href="/"><img src="images/logo.png" alt="Rafbakki Logo"></a>
         <div class="header-text"></div>
         <div class="date-time">
             <div id="date"></div>
