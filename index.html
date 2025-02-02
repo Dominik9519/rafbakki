@@ -9,7 +9,7 @@
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #333; /* Ciemnoszary tło */
+            background-color: #333;
             color: white;
             text-align: center;
         }
@@ -37,7 +37,7 @@
         }
 
         .header {
-            background-color: #1a1a1a; /* Lekko jaśniejszy odcień czerni */
+            background-color: #1a1a1a;
             padding: 10px 0;
             position: fixed;
             top: 0;
@@ -50,20 +50,28 @@
             height: 80px;
         }
         .header img {
-            max-width: 220px;
-            position: absolute;
-            left: 10px;
-            top: 0px;
+            position: relative;
+            max-width: 220px; /* Default logo size */
             transition: max-width 0.3s ease-in-out; /* Smooth transition for resizing */
         }
-        
+
         @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
             .header img {
-                max-width: 140px; /* Smaller size for mobile */
-                position: relative; /* Center logo on mobile */
-                left: 0;
-                top: 0;
-                margin: 0 auto;
+                max-width: 120px; /* Smaller logo size for mobile */
+                margin: 0 auto; /* Center the logo */
+            }
+
+            .date-time {
+                display: none; /* Hide the date and time on mobile */
+            }
+
+            .flex-container {
+                flex-direction: column; /* Stack the containers on mobile */
             }
         }
 
@@ -75,15 +83,10 @@
             color: white;
             text-align: right;
             padding-right: 20px;
-            display: block;
-        }
-        .date-time #date, .date-time #time {
-            display: block;
-            font-size: 25px;
         }
 
         .main-content {
-            padding-top: 120px; /* Adjust for header height */
+            padding-top: 100px; /* Adjust for header height */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -109,7 +112,7 @@
             margin: 10px;
             padding: 20px;
             border-radius: 8px;
-            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            background: rgba(0, 0, 0, 0.7);
             color: white;
         }
 
@@ -121,7 +124,7 @@
             border-radius: 5px;
         }
         .contact-form button {
-            background-color: #4CAF50; /* Green button */
+            background-color: #4CAF50;
             color: white;
             padding: 15px 20px;
             border: none;
@@ -131,7 +134,7 @@
             transition: background 0.3s;
         }
         .contact-form button:hover {
-            background-color: #45a049; /* Darker shade of green */
+            background-color: #45a049;
         }
 
         .footer {
@@ -144,7 +147,7 @@
         }
 
         .phone-number a {
-            color: #4CAF50; /* Green text color */
+            color: #4CAF50;
             font-size: 20px;
             text-decoration: none;
             font-weight: bold;
@@ -211,19 +214,9 @@
     <script>
         window.addEventListener("load", function () {
             setTimeout(function () {
-                document.getElementById("preloader").classList.add("hide-preloader");
-            }, 1000);
+                document.getElementById('preloader').classList.add('hide-preloader');
+            }, 1000); // Hide preloader after 1 second
         });
-        function updateDateTime() {
-            var dt = new Date();
-            document.getElementById("date").innerHTML = dt.toLocaleDateString('is-IS', {
-                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-            });
-            document.getElementById("time").innerHTML = dt.toLocaleTimeString('is-IS', {
-                hour: '2-digit', minute: '2-digit', second: '2-digit'
-            });
-        }
-        setInterval(updateDateTime, 1000);
     </script>
 </body>
 </html>
